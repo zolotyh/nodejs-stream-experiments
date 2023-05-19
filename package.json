@@ -8,9 +8,10 @@
   },
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
-    "start:prod": "fastify start -l info app.js | npx pino-pretty",
+    "prod": "fastify start -l info app.js | npx pino-pretty",
     "start:server": "fastify start -w -l info -P app.js | npx pino-pretty",
-    "start:client": "serve client -p 8080"
+    "start:client": "serve client -l 8080",
+    "start": "concurrently --kill-others-on-fail \"npm:start:*\""
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "serve": "^14.2.0"
   },
   "devDependencies": {
+    "concurrently": "^8.0.1",
     "tap": "^16.1.0"
   }
 }
